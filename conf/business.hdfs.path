@@ -1,0 +1,14 @@
+PUSH服务:推送平台:/user/hive/warehouse/push_service.db
+广告推荐:广告平台:/user/hive/warehouse/ad_recommend.db
+广告推荐:广告平台:/user/hive/warehouse/ad_bj.db
+阅读:读书:/user/hive/warehouse/uxip.db/edl_uxip_event_detail_di/stat_date=*/app_name=com.meizu.media.ebook
+阅读:读书:/user/hive/warehouse/mzreader.db/*ebook*
+阅读:读书:/user/hive/warehouse/mzreader.db/ods_t_ebk*
+MZERP:客服中心网点KPI:/user/hive/warehouse/mzerp.db/ods_csc*
+MZERP:客服中心网点KPI:/user/hive/warehouse/mzerp.db/dws_csc*
+MZERP:客服中心网点KPI:/user/hive/warehouse/mzerp.db/ads_csc*
+海外业务:海外综合数据:/user/hive/warehouse/user_profile.db/*overseas*
+用户体验改善:GSLB等:/user/hive/warehouse/uxip.db/edl_uxip_event_detail_di/stat_date=*/app_name=com.meizu.uxip.log
+基础数据:HDFS元数据:/user/hive/warehouse/common_db.db/*hdfs*
+基础数据:HDFS元数据:/user/hive/warehouse/common_db.db/ads_hive*
+优选电商:/user/hive/warehouse/mzmall.db

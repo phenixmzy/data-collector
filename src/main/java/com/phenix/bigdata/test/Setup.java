@@ -1,0 +1,23 @@
+package com.phenix.bigdata.test;
+
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
+public class Setup {
+    public static void main(String[] args) {
+        int times = Integer.valueOf(args[0]);
+        String bootStrapServer = args[1];
+        String topic = args[2];
+        long delay = Long.parseLong(args[4]); // 5L
+        long unit = Long.parseLong(args[5]);  // 60L
+//        int times = 5;
+//        String bootStrapServer = "localhost:9092";
+//        String topic = "gameplay";
+//        long delay = 5L;
+//        long unit = 60L;
+        ScheduledExecutorService service = Executors.newScheduledThreadPool(1);
+        service.scheduleWithFixedDelay(new GamePlayRunnable(times, bootStrapServer,topic), delay, unit, TimeUnit.SECONDS);
+    }
+
+}
