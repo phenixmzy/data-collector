@@ -9,8 +9,8 @@ public class Setup {
         int times = Integer.valueOf(args[0]);
         String bootStrapServer = args[1];
         String topic = args[2];
-        long delay = Long.parseLong(args[4]); // 5L
-        long unit = Long.parseLong(args[5]);  // 60L
+        long delay = Long.parseLong(args[3]); // 5L
+        long unit = Long.parseLong(args[4]);  // 60L
 //        int times = 5;
 //        String bootStrapServer = "localhost:9092";
 //        String topic = "gameplay";
