@@ -59,9 +59,8 @@ public class GamePlayRunnable implements Runnable {
     }
 
     private void sendToKafka(String topic, String json) {
-        System.out.println(json);
-//        ProducerRecord<String, String> record = new ProducerRecord<String, String>(topic, json);
-//        procuder.send(record);
+        ProducerRecord<String, String> record = new ProducerRecord<String, String>(topic, json);
+        procuder.send(record);
     }
 
 
