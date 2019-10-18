@@ -14,7 +14,7 @@ public class GamePlayFactory {
         String userId = String.valueOf((long)((Math.random()*9+1)*10000000));
         int currTimeStamp = (int)(System.currentTimeMillis()/1000) ;
 
-        int delay = getRandNum(1, 300);
+        int delay = getRandNum(1, 10);
         int timeLen = getRandNum(1, 300);
         int leaveTime = currTimeStamp - delay;
         int startTime = leaveTime - timeLen;
@@ -26,8 +26,8 @@ public class GamePlayFactory {
         gamePlay.setGameId(gameId);
         gamePlay.setUserId(userId);
         gamePlay.setTimeLen(timeLen);
-        gamePlay.setStartTimeStamp(startTime);
-        gamePlay.setLeaveTimeStamp(leaveTime);
+        gamePlay.setStartTime(startTime);
+        gamePlay.setLeaveTime(leaveTime);
         gamePlay.setGameType(gameType);
         gamePlay.setSite(site);
         gamePlay.setChannelFrom(channelFrom);
