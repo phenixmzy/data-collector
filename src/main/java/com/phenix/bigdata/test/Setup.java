@@ -10,10 +10,10 @@ public class Setup {
         String bootStrapServer = args[1];
         String topic = args[2];
         long delay = Long.parseLong(args[3]); // 5L
-        long unit = Long.parseLong(args[4]);  // 60L
-        int gamePlayMaxDelay = Integer.parseInt(args[5]); // 5
-        int gameIdMaxNum = Integer.parseInt(args[6]);
-        int userIdMaxNum = Integer.parseInt(args[7]);
+        long unit = Long.parseLong(args[4]);  // 30L
+        int gamePlayMaxDelay = Integer.parseInt(args[5]); // 300
+        int gameIdMaxNum = Integer.parseInt(args[6]); // 100000
+        int userIdMaxNum = Integer.parseInt(args[7]); // 100000000
 //        int times = 5;
 //        String bootStrapServer = "localhost:9092";
 //        String topic = "gameplay";
