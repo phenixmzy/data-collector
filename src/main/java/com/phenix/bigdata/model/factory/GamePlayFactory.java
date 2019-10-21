@@ -8,13 +8,13 @@ public class GamePlayFactory {
     private static final String[] SITES = new String[]{"index", "kw", "qvod", "kugo", "qq", "qvod"};
     private static final String[] IPS = new String[]{"192.168.1.10", "192.168.1.62", "192.168.1.127", "192.168.1.135", "192.168.1.156", "192.168.1.181", "192.168.1.197", "192.168.1.205", "192.168.1.210", "192.168.1.223"};
 
-    public static GamePlay build() {
+    public static GamePlay build(int gameIdMaxNum, int userIdMaxNum, int maxDelay) {
 
-        String gameId = String.valueOf((int)((Math.random()*9+1)*10000));
-        String userId = String.valueOf((long)((Math.random()*9+1)*10000000));
+        String gameId = String.valueOf((int)((Math.random()*9+1) * gameIdMaxNum));
+        String userId = String.valueOf((long)((Math.random()*9+1) * userIdMaxNum));
         int currTimeStamp = (int)(System.currentTimeMillis()/1000) ;
 
-        int delay = getRandNum(1, 10);
+        int delay = getRandNum(1, maxDelay);
         int timeLen = getRandNum(1, 300);
         int leaveTime = currTimeStamp - delay;
         int startTime = leaveTime - timeLen;

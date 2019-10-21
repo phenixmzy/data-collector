@@ -17,20 +17,25 @@ public class GamePlayRunnable implements Runnable {
     private String bootStrapServer;
     private String topic;
     private Producer<String, String> procuder = null;
+    private int gamePlayMaxDelay;
+    private int gameIdMaxNum;
+    private int userIdMaxNum;
 
 
-    public GamePlayRunnable(int times, String bootStrapServer, String topic) {
-
+    public GamePlayRunnable(int times, String bootStrapServer, String topic, int gameIdMaxNum, int userIdMaxNum, int gamePlayMaxDelay) {
         this.times = times;
         this.bootStrapServer = bootStrapServer;
         this.topic = topic;
         this.procuder = new KafkaProducer<String, String>(getkafkaConf(this.bootStrapServer));
+        this.gameIdMaxNum = gameIdMaxNum;
+        this.userIdMaxNum = userIdMaxNum;
+        this.gamePlayMaxDelay = gamePlayMaxDelay;
     }
 
     @Override
     public void run() {
         for (int i = 0; i < times; i++) {
-            GamePlay gamePlay = GamePlayFactory.build();
+            GamePlay gamePlay = GamePlayFactory.build(this.gameIdMaxNum, this.userIdMaxNum, this.gamePlayMaxDelay);
             String gamePlayJsonStr = JSON.toJSONString(gamePlay, SerializerFeature.WriteMapNullValue);
             sendToKafka(topic, gamePlayJsonStr);
         }
