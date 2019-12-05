@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+# vim run_makedate_gameplay.sh
+# >set ff=unix
+
 VERSION=0.0.1
 BASE_DIR=$(dirname $(pwd))
 JARS=""
