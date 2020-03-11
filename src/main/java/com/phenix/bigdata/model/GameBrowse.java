@@ -3,8 +3,8 @@ package com.phenix.bigdata.model;
 public class GameBrowse {
     private String gameId;
     private String userId;
-    private int startTime;
-    private int leaveTime;
+    private int browseTime;
+
     private int timeLen;
     private String userIp;
     private String gameType;
@@ -27,21 +27,9 @@ public class GameBrowse {
         this.userId = userId;
     }
 
-    public int getStartTime() {
-        return startTime;
-    }
+    public int getBrowseTime() { return browseTime; }
 
-    public void setStartTime(int startTime) {
-        this.startTime = startTime;
-    }
-
-    public int getLeaveTime() {
-        return leaveTime;
-    }
-
-    public void setLeaveTime(int leaveTime) {
-        this.leaveTime = leaveTime;
-    }
+    public void setBrowseTime(int browseTime) { this.browseTime = browseTime; }
 
     public int getTimeLen() {
         return timeLen;
