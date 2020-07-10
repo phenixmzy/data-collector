@@ -4,7 +4,6 @@ public class GameBrowse {
     private String gameId;
     private String userId;
     private int browseTime;
-
     private int timeLen;
     private String userIp;
     private String gameType;
