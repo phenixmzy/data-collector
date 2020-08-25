@@ -2,8 +2,8 @@ package com.phenix.bigdata.test;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
-import com.phenix.bigdata.model.GameBrowse;
-import com.phenix.bigdata.model.GamePlay;
+import com.phenix.bigdata.model.GameBrowseEvent;
+import com.phenix.bigdata.model.GamePlayEvent;
 import com.phenix.bigdata.model.factory.GameBrowseFactory;
 import com.phenix.bigdata.model.factory.GamePlayEventFactoryByBrowseEvent;
 import org.apache.kafka.clients.producer.KafkaProducer;
@@ -38,10 +38,10 @@ public class GameBrowseRunnable implements Runnable {
     @Override
     public void run() {
         for (int i = 0; i < times; i++) {
-            GameBrowse browse = GameBrowseFactory.build(this.gameIdMaxNum, this.userIdMaxNum, this.gamePlayMaxDelay);
-            GamePlay gamePlay = GamePlayEventFactoryByBrowseEvent.build(userIdMaxNum, gamePlayMaxDelay, browse);
+            GameBrowseEvent browse = GameBrowseFactory.build(this.gameIdMaxNum, this.userIdMaxNum, this.gamePlayMaxDelay);
+            GamePlayEvent gamePlayEvent = GamePlayEventFactoryByBrowseEvent.build(userIdMaxNum, gamePlayMaxDelay, browse);
             String gameBrowseJsonStr = JSON.toJSONString(browse, SerializerFeature.WriteMapNullValue);
-            String gamePlayJsonStr = JSON.toJSONString(gamePlay, SerializerFeature.WriteMapNullValue);
+            String gamePlayJsonStr = JSON.toJSONString(gamePlayEvent, SerializerFeature.WriteMapNullValue);
             sendToKafka(browseTopic, gameBrowseJsonStr);
             if (i % 10 > 0) {
                 sendToKafka(gamePlayTopic, gamePlayJsonStr);

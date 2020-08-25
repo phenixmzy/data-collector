@@ -1,9 +1,8 @@
 package com.phenix.bigdata.test;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.serializer.SerializerFeature;
-import com.phenix.bigdata.model.GamePlay;
+import com.phenix.bigdata.model.GamePlayEvent;
 import com.phenix.bigdata.model.factory.GamePlayFactory;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.Producer;
@@ -35,8 +34,8 @@ public class GamePlayRunnable implements Runnable {
     @Override
     public void run() {
         for (int i = 0; i < times; i++) {
-            GamePlay gamePlay = GamePlayFactory.build(this.gameIdMaxNum, this.userIdMaxNum, this.gamePlayMaxDelay);
-            String gamePlayJsonStr = JSON.toJSONString(gamePlay, SerializerFeature.WriteMapNullValue);
+            GamePlayEvent gamePlayEvent = GamePlayFactory.build(this.gameIdMaxNum, this.userIdMaxNum, this.gamePlayMaxDelay);
+            String gamePlayJsonStr = JSON.toJSONString(gamePlayEvent, SerializerFeature.WriteMapNullValue);
             sendToKafka(topic, gamePlayJsonStr);
         }
     }

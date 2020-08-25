@@ -1,15 +1,18 @@
 package com.phenix.bigdata.model.factory;
-import com.phenix.bigdata.model.GameBrowse;
+import com.phenix.bigdata.charging.collector.SnowFlake;
+import com.phenix.bigdata.model.GameBrowseEvent;
 
 public class GameBrowseFactory {
+    private final static SnowFlake snowFlake = new SnowFlake(10L, 30L);
     private final static String IP_SPLIT = ".";
     private static final String[] GAME_TYPES = new String[]{"exe", "web", "onlie", "flash"};
     private static final String[] CHANNEL_FROMS = new String[]{"my", "category", "game_helper", "recommend", "726", "4399", "kuwo", "relateflash"};
     private static final String[] SITES = new String[]{"index", "kw", "qvod", "kugo", "qq", "qvod"};
     private static final String[] CLIENT_VERSIONS = new String[] {"1.6.2","1.8.8","2.31.7","2.5.16","2.7.19","3.2.1","3.1.2","3.4.8"};
     private static final String[] DRIVERS = new String[] {"PC","MAC PRO","MAC AIR","MI","HUAWEI MateBook","DELL", "LX", "SX", "HP"};
+    private static final String[] VERSIONS = new String[]{"0.1","0.2","0.2.3","1.3.1","2.4","2.5.2","2.8"};
 
-    public static GameBrowse build(int gameIdMaxNum, int userIdMaxNum, int maxDelay) {
+    public static GameBrowseEvent build(int gameIdMaxNum, int userIdMaxNum, int maxDelay) {
         String gameId = String.valueOf((int)((Math.random()*9+1) * gameIdMaxNum));
         String userId = String.valueOf((long)((Math.random()*9+1) * userIdMaxNum));
         int currTimeStamp = (int)(System.currentTimeMillis()/1000) ;
@@ -18,11 +21,13 @@ public class GameBrowseFactory {
         String gameType = GAME_TYPES[getRandNum(0,4) % 4];
         String channelFrom = CHANNEL_FROMS[getRandNum(0,8) % 8];
         String site = SITES[getRandNum(0,6) % 6];
-        String clientVersion = CLIENT_VERSIONS[getRandNum(0,8) % 8];
-        String clientDriver = DRIVERS[getRandNum(0,9) % 9];
         String userIp = getUserIp();
+        String clientVersion = CLIENT_VERSIONS[getRandNum(0,CLIENT_VERSIONS.length)%CLIENT_VERSIONS.length];
+        String version = VERSIONS[getRandNum(0,VERSIONS.length)%VERSIONS.length];
+        String driver = DRIVERS[getRandNum(0, DRIVERS.length)%DRIVERS.length];
 
-        GameBrowse browse = new GameBrowse();
+        GameBrowseEvent browse = new GameBrowseEvent();
+        browse.setTxId(snowFlake.nextId());
         browse.setGameId(gameId);
         browse.setUserId(userId);
         browse.setTimeLen(timeLen);
@@ -32,8 +37,8 @@ public class GameBrowseFactory {
         browse.setChannelFrom(channelFrom);
         browse.setUserIp(userIp);
         browse.setClientVersion(clientVersion);
-        browse.setClientDriver(clientDriver);
-
+        browse.setVersion(version);
+        browse.setDriver(driver);
         return browse;
     }
 

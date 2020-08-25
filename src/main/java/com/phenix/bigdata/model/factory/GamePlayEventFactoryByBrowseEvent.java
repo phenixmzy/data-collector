@@ -1,12 +1,12 @@
 package com.phenix.bigdata.model.factory;
 
-import com.phenix.bigdata.model.GameBrowse;
-import com.phenix.bigdata.model.GamePlay;
+import com.phenix.bigdata.model.GameBrowseEvent;
+import com.phenix.bigdata.model.GamePlayEvent;
 
 public class GamePlayEventFactoryByBrowseEvent {
     private final static String IP_SPLIT = ".";
 
-    public static GamePlay build(int maxDelay, int maxTimeLen, GameBrowse browseEvent) {
+    public static GamePlayEvent build(int maxDelay, int maxTimeLen, GameBrowseEvent browseEvent) {
         String gameId = browseEvent.getGameId();
         String userId = browseEvent.getGameId();
         int browseTimeStamp = browseEvent.getBrowseTime() ;
@@ -19,7 +19,7 @@ public class GamePlayEventFactoryByBrowseEvent {
         String site = browseEvent.getSite();
         String userIp = browseEvent.getUserIp();
 
-        GamePlay gamePlayEvent = new GamePlay();
+        GamePlayEvent gamePlayEvent = new GamePlayEvent();
         gamePlayEvent.setGameId(gameId);
         gamePlayEvent.setUserId(userId);
         gamePlayEvent.setStartTime(startTime);
@@ -45,7 +45,7 @@ public class GamePlayEventFactoryByBrowseEvent {
     }
 
     public static void main(String[] args) {
-        GamePlay envent = build( 300, 300, null);
+        GamePlayEvent envent = build( 300, 300, null);
         System.out.println("gameId="+envent.getGameId() + " userId=" + envent.getUserId() + " userIp=" + envent.getUserIp()+ " startTime=" + envent.getStartTime() + " channelFrom=" + envent.getChannelFrom() + " gameType=" + envent.getGameType());
     }
 

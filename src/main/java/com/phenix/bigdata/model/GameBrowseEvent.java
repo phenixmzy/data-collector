@@ -1,24 +1,41 @@
 package com.phenix.bigdata.model;
 
-public class GamePlay {
+public class GameBrowseEvent {
+    private long txId;
     private String gameId;
     private String userId;
-    private int startTime;
-    private int leaveTime;
+    private int browseTime;
     private int timeLen;
     private String userIp;
     private String gameType;
     private String channelFrom;
     private String site;
     private String clientVersion;
-    private String clientDriver;
+    private String version;
+    private String driver;
 
-    public String getClientDriver() {
-        return clientDriver;
+    public long getTxId() {
+        return txId;
     }
 
-    public void setClientDriver(String clientDriver) {
-        this.clientDriver = clientDriver;
+    public void setTxId(long txId) {
+        this.txId = txId;
+    }
+
+    public String getDriver() {
+        return driver;
+    }
+
+    public void setDriver(String driver) {
+        this.driver = driver;
+    }
+
+    public String getVersion() {
+        return version;
+    }
+
+    public void setVersion(String version) {
+        this.version = version;
     }
 
     public String getClientVersion() {
@@ -45,21 +62,9 @@ public class GamePlay {
         this.userId = userId;
     }
 
-    public int getStartTime() {
-        return startTime;
-    }
+    public int getBrowseTime() { return browseTime; }
 
-    public void setStartTime(int startTime) {
-        this.startTime = startTime;
-    }
-
-    public int getLeaveTime() {
-        return leaveTime;
-    }
-
-    public void setLeaveTime(int leaveTime) {
-        this.leaveTime = leaveTime;
-    }
+    public void setBrowseTime(int browseTime) { this.browseTime = browseTime; }
 
     public int getTimeLen() {
         return timeLen;
