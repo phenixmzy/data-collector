@@ -38,8 +38,6 @@ public class GameBrowseRunnable implements Runnable {
     @Override
     public void run() {
         for (int i = 0; i < times; i++) {
-            try {
-                this.wait(10);
                 GameBrowseEvent browse = GameBrowseFactory.build(this.gameIdMaxNum, this.userIdMaxNum, this.gamePlayMaxDelay);
                 GamePlayEvent gamePlayEvent = GamePlayEventFactoryByBrowseEvent.build(userIdMaxNum, gamePlayMaxDelay, browse);
                 String gameBrowseJsonStr = JSON.toJSONString(browse, SerializerFeature.WriteMapNullValue);
@@ -48,9 +46,7 @@ public class GameBrowseRunnable implements Runnable {
                 if (i % 10 > 0) {
                     sendToKafka(gamePlayTopic, gamePlayJsonStr);
                 }
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+
         }
     }
 
