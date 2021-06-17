@@ -40,8 +40,6 @@ public class GamePlayRunnable implements Runnable {
         }
     }
 
-
-
     public Properties getkafkaConf(String bootStrapServer) {
         Properties properties = new Properties();
         // config producer
@@ -58,6 +56,10 @@ public class GamePlayRunnable implements Runnable {
 
         properties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringSerializer");
         properties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringSerializer");
+
+        properties.put("security.protocol", "SASL_PLAINTEXT");
+        properties.put("sasl.kerberos.service.name", "kafka");
+        properties.put("sasl.mechanism", "GSSAPI");
 
         return properties;
     }

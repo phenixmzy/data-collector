@@ -1,5 +1,12 @@
 package com.phenix.bigdata.test;
 
+import com.phenix.bigdata.charging.collector.HDFSSpaceConsumedCollectService;
+
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -15,6 +22,7 @@ public class Setup {
         int gamePlayMaxDelay = Integer.parseInt(args[6]); // 300
         int gameIdMaxNum = Integer.parseInt(args[7]); // 100000
         int userIdMaxNum = Integer.parseInt(args[8]); // 100000000
+
         /*int times = 5;
         String bootStrapServer = "host-client-01:9092,host-client-02:9092,host-client-03:9092";
         String topic = "gameplay-input";
@@ -24,7 +32,6 @@ public class Setup {
         int gameIdMaxNum = 100000;
         int userIdMaxNum = 100000000;*/
         ScheduledExecutorService service = Executors.newScheduledThreadPool(1);
-        service.scheduleWithFixedDelay(new GameBrowseRunnable(times, bootStrapServer,browseTopic, playTopic, gameIdMaxNum, userIdMaxNum, gamePlayMaxDelay), delay, unit, TimeUnit.SECONDS);
+        service.scheduleWithFixedDelay(new GamePlayRunnable(times, bootStrapServer, playTopic, gameIdMaxNum, userIdMaxNum, gamePlayMaxDelay), delay, unit, TimeUnit.SECONDS);
     }
-
 }
