@@ -15,8 +15,8 @@ public class GamePlayFactory {
 
     public static GamePlayEvent build(int gameIdMaxNum, int userIdMaxNum, int maxDelay) {
 
-        String gameId = String.valueOf((int)((Math.random()*9+1) * gameIdMaxNum));
-        String userId = String.valueOf((long)((Math.random()*9+1) * userIdMaxNum));
+        int gameId = (int)((Math.random()*9+1) * gameIdMaxNum);
+        long userId = (long)((Math.random()*9+1) * userIdMaxNum);
         int currTimeStamp = (int)(System.currentTimeMillis()/1000) ;
 
         int delay = getRandNum(1, maxDelay);

@@ -13,8 +13,8 @@ public class GameBrowseFactory {
     private static final String[] VERSIONS = new String[]{"0.1","0.2","0.2.3","1.3.1","2.4","2.5.2","2.8"};
 
     public static GameBrowseEvent build(int gameIdMaxNum, int userIdMaxNum, int maxDelay) {
-        String gameId = String.valueOf((int)((Math.random()*9+1) * gameIdMaxNum));
-        String userId = String.valueOf((long)((Math.random()*9+1) * userIdMaxNum));
+        int gameId = (int)((Math.random()*9+1) * gameIdMaxNum);
+        long userId = (long)((Math.random()*9+1) * userIdMaxNum);
         int currTimeStamp = (int)(System.currentTimeMillis()/1000) ;
 
         int timeLen = getRandNum(1, 300);

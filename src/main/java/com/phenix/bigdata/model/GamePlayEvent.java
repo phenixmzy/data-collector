@@ -2,8 +2,8 @@ package com.phenix.bigdata.model;
 
 public class GamePlayEvent {
     private long txId;
-    private String gameId;
-    private String userId;
+    private int gameId;
+    private long userId;
     private int startTime;
     private int leaveTime;
     private int timeLen;
@@ -47,19 +47,19 @@ public class GamePlayEvent {
         this.clientVersion = clientVersion;
     }
 
-    public String getGameId() {
+    public int getGameId() {
         return gameId;
     }
 
-    public void setGameId(String gameId) {
+    public void setGameId(int gameId) {
         this.gameId = gameId;
     }
 
-    public String getUserId() {
+    public long getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(long userId) {
         this.userId = userId;
     }
 

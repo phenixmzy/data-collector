@@ -7,8 +7,8 @@ public class GamePlayEventFactoryByBrowseEvent {
     private final static String IP_SPLIT = ".";
 
     public static GamePlayEvent build(int maxDelay, int maxTimeLen, GameBrowseEvent browseEvent) {
-        String gameId = browseEvent.getGameId();
-        String userId = browseEvent.getGameId();
+        int gameId = browseEvent.getGameId();
+        long userId = browseEvent.getUserId();
         int browseTimeStamp = browseEvent.getBrowseTime() ;
         int delay = getRandNum(1, maxDelay);
         int timeLen = getRandNum(1, maxTimeLen);
